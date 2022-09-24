@@ -8,6 +8,8 @@
 	--hero-bg-color: #2f303a;
 	--line-color: #ececec;
 	--social-link-color: #afb1b8;
+
+	--timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Загальні стилі */
@@ -131,6 +133,8 @@ img {
 .nav-link {
 	position: relative;
 
+	transition: color 250ms var(--timing-function);
+
 	display: block;
 	padding-top: 32px;
 	padding-bottom: 32px;
@@ -174,6 +178,8 @@ img {
 	align-items: center;
 
 	padding: 32px 0px 32px;
+
+	transition: color 250ms var(--timing-function);
 
 	font-weight: 500;
 	font-size: 14px;
@@ -245,8 +251,13 @@ img {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
+	z-index: 1;
+
+	opacity: 1;
+	transition: opacity 250ms var(--timing-function);
+
+	height: 100vh;
+	width: 100vw;
 
 	background-color: rgba(0, 0, 0, 0.5);
 }
@@ -255,7 +266,8 @@ img {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: scale(1) translate(-50%, -50%);
+	transition: transform 250ms var(--timing-function), opacity 250ms var(--timing-function);
 
 	min-height: 581px;
 	min-width: 528px;
@@ -263,6 +275,10 @@ img {
 	background: var(--additional-color);
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
+}
+
+.backdrop.is-hidden .modal {
+	transform: scale(0.8) translate(-50%, -50%);
 }
 
 .backdrop.is-hidden {
@@ -423,6 +439,8 @@ img {
 	justify-content: center;
 	align-items: center;
 
+	transition: background-color 250ms var(--timing-function), fill 250ms var(--timing-function);
+
 	fill: var(--social-link-color);
 }
 
@@ -458,6 +476,8 @@ img {
 	width: 170px;
 	height: 92px;
 	border-radius: 4px;
+
+	transition: color 250ms var(--timing-function), border 250ms var(--timing-function);
 
 	border: 1px solid var(--social-link-color);
 	color: var(--social-link-color);
@@ -496,6 +516,10 @@ img {
 	padding: 6px 22px;
 	border-radius: 4px;
 	border: 1px solid transparent;
+
+	transition-property: box-shadow, color, background;
+	transition-duration: 250ms;
+	transition-timing-function: var(--timing-function);
 }
 .filter-button.active {
 	box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -526,6 +550,8 @@ img {
 }
 .portfolio-link {
 	display: block;
+
+	transition: box-shadow 250ms var(--timing-function);
 }
 
 .portfolio-link:hover,
@@ -533,13 +559,24 @@ img {
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.portfolio-link .portfolio-description,
+.portfolio-link .portfolio-description {
+	transform: translateY(100%);
+}
+.portfolio-link .portfolio-description,
+.portfolio-link .portfolio-description {
+	transition-property: opacity 250ms var(--timing-function), transform 250ms var(--timing-function);
+}
+
 .portfolio-link:hover .portfolio-description,
 .portfolio-link:focus .portfolio-description {
 	opacity: 1;
+	transform: translateY(0);
 }
 
 .portfolio-thumb {
 	position: relative;
+	overflow: hidden;
 }
 
 .portfolio-description {
@@ -622,9 +659,13 @@ img {
 
 .address-map {
 	color: var(--additional-color);
+
+	transition: color 250ms var(--timing-function);
 }
 .address-link {
 	color: rgba(255, 255, 255, 0.6);
+
+	transition: color 250ms var(--timing-function);
 }
 .address-map:hover,
 .address-map:focus,
@@ -658,6 +699,8 @@ img {
 	border-radius: 50%;
 	justify-content: center;
 	align-items: center;
+
+	transition: background-color 250ms var(--timing-function);
 
 	background-color: rgba(255, 255, 255, 0.1);
 	color: var(--additional-color);
