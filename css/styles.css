@@ -124,10 +124,13 @@ img {
 .nav-list {
 	display: flex;
 }
+
 .nav .item + .item {
 	margin-left: 50px;
 }
 .nav-link {
+	position: relative;
+
 	display: block;
 	padding-top: 32px;
 	padding-bottom: 32px;
@@ -140,6 +143,20 @@ img {
 }
 .current {
 	color: var(--brand-color);
+}
+
+.current::after {
+	position: absolute;
+	content: "";
+
+	display: block;
+
+	width: 100%;
+	height: 4px;
+	border-radius: 2px;
+	bottom: 0px;
+
+	background-color: var(--brand-color);
 }
 
 /* Контакти */
@@ -181,7 +198,6 @@ img {
 	max-width: 1600px;
 	margin-left: auto;
 	margin-right: auto;
-
 	text-align: center;
 
 	background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("../images/hero.jpg");
@@ -221,6 +237,57 @@ img {
 	letter-spacing: 0.06em;
 
 	color: var(--additional-color);
+}
+
+/* Модальне вікно */
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	min-height: 581px;
+	min-width: 528px;
+
+	background: var(--additional-color);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.backdrop.is-hidden {
+	visibility: hidden;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.close-button {
+	position: absolute;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	right: 8px;
+	top: 8px;
+	background-color: transparent;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #000000;
+}
+
+.modal-icon {
 }
 
 /* Наші переваги */
@@ -275,6 +342,27 @@ img {
 	justify-content: space-between;
 }
 .work-list .item {
+	position: relative;
+}
+
+.work-text {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	width: 100%;
+
+	padding: 27px 0px;
+
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 1.14;
+	text-align: center;
+	text-transform: uppercase;
+
+	background-color: rgba(47, 48, 58, 0.8);
+
+	color: var(--additional-color);
 }
 
 /* Наша команда */
@@ -444,6 +532,37 @@ img {
 .portfolio-link:focus {
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
+.portfolio-link:hover .portfolio-description,
+.portfolio-link:focus .portfolio-description {
+	opacity: 1;
+}
+
+.portfolio-thumb {
+	position: relative;
+}
+
+.portfolio-description {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	padding: 63px 24px;
+	overflow: hidden;
+
+	opacity: 0;
+
+	font-size: 18px;
+	line-height: 1.56;
+
+	color: var(--additional-color);
+
+	background: rgba(33, 150, 243, 0.9);
+}
+
 .portfolio-card {
 	border-left: 1px solid var(--line-color);
 	border-right: 1px solid var(--line-color);
