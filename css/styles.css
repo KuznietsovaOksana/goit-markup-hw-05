@@ -266,8 +266,9 @@ img {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: scale(1) translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(1);
 	transition: transform 250ms var(--timing-function), opacity 250ms var(--timing-function);
+	opacity: 1;
 
 	min-height: 581px;
 	min-width: 528px;
@@ -278,11 +279,10 @@ img {
 }
 
 .backdrop.is-hidden .modal {
-	transform: scale(0.8) translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(0.9);
 }
 
 .backdrop.is-hidden {
-	visibility: hidden;
 	opacity: 0;
 	pointer-events: none;
 }
@@ -366,9 +366,12 @@ img {
 	bottom: 0;
 	left: 0;
 
+	height: 70px;
 	width: 100%;
 
-	padding: 27px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	font-weight: 700;
 	font-size: 14px;
